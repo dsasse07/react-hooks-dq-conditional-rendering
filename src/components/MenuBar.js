@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function MenuBar({ onContentChange, contentState }) {
   /*
@@ -11,29 +11,23 @@ function MenuBar({ onContentChange, contentState }) {
   this component be made aware of what is currently the active menu item?
 
   */
-  const [activeButton, setActiveButton] = useState("")
-  function handleClick(event, word){
-    console.log('word', word)
-    setActiveButton(word)
-    onContentChange(word)
-  }
-  
+
 
   return (
     <div className="ui four item menu">
-      <span className={activeButton === "profile" ? "item active" : "item"} onClick={(event) => handleClick(event, "profile")}>
+      <span className={contentState === "profile" ? "item active" : "item"} onClick={() => onContentChange( "profile")}>
         <i className="user large icon" />
       </span>
 
-      <span className={activeButton === "photos" ? "item active" : "item"} onClick={(event) => handleClick(event,"photos")}>
+      <span className={contentState === "photos" ? "item active" : "item"} onClick={() => onContentChange("photos")}>
         <i className="photo large icon" />
       </span>
 
-      <span className={activeButton === "cocktails" ? "item active" : "item"} onClick={(event) => handleClick(event,"cocktails")}>
+      <span className={contentState === "cocktails" ? "item active" : "item"} onClick={() => onContentChange("cocktails")}>
         <i className="cocktail large icon" />
       </span>
 
-      <span className={activeButton === "pokemon" ? "item active" : "item"} onClick={(event) => handleClick(event,"pokemon")}>
+      <span className={contentState === "pokemon" ? "item active" : "item"} onClick={() => onContentChange("pokemon")}>
         <i className=" themeisle large icon" />
       </span>
     </div>

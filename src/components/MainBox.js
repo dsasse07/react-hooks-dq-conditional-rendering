@@ -11,29 +11,28 @@ function MainBox() {
     - Which component should have methods to control state? 
     - Where should these methods be called?
   */
-  const [content, setContent] = useState(<Profile/>)
-
-  function handleContentChange(titleOfContent) {
-    switch (true){  
-      case(titleOfContent === "profile"):
-        setContent(<Profile/>)
-        break
-      case(titleOfContent === "photos"):
-        setContent(<Photos/>)
-        break
-      case(titleOfContent === "cocktails"):
-        setContent(<Cocktails/>)
-        break
-      case(titleOfContent === "pokemon"):
-        setContent(<Pokemon/>)
-        break
-    }
+  const [content, setContent] = useState("profile")
+  
+  let componentToDisplay
+  switch (true){  
+    case(content === "profile"):
+      componentToDisplay = <Profile/>
+      break
+    case(content === "photos"):
+      componentToDisplay = <Photos/>
+      break
+    case(content === "cocktails"):
+      componentToDisplay = <Cocktails/>
+      break
+    case(content === "pokemon"):
+      componentToDisplay = <Pokemon/>
+      break
   }
 
   return (
     <div>
-      <MenuBar onContentChange={handleContentChange} contentState={content}/>
-      {content}
+      <MenuBar onContentChange={setContent} contentState={content}/>
+      {componentToDisplay}
     </div>
   );
 }
